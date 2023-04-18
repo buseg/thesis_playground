@@ -46,7 +46,7 @@ def concat_data(labelsfile, notes_file):
     return outfilename
 
 
-def concat_data_respiratory(labelsfile, notes_file):
+def concat_data_respiratory(labelsfile, notes_file, outfilename):
     """
         INPUTS:
             labelsfile: sorted by hadm id, contains one label per line
@@ -55,7 +55,6 @@ def concat_data_respiratory(labelsfile, notes_file):
     with open(labelsfile, 'r') as lf:
         print("CONCATENATING")
         with open(notes_file, 'r') as notesfile:
-            outfilename = '%s/notes_labeled_respiratory.csv' % MIMIC_3_DIR
             with open(outfilename, 'w') as outfile:
                 w = csv.writer(outfile)
                 w.writerow(['SUBJECT_ID', 'HADM_ID', 'TEXT', 'LABELS'])
